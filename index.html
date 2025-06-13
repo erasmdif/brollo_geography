@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Map App</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="controls">
+    <h2>Filter by page range</h2>
+    <div id="pageSlider"></div>
+    <p id="rangeValue"></p>
+    <label><input type="checkbox" id="toggleProvinces" checked> Show Provinces</label><br>
+    <label><input type="checkbox" id="toggleCities" checked> Show Cities</label>
+  </div>
+  <div id="map"></div>
+  <div id="sidebar">
+    <h2>Attestations</h2>
+    <div id="results"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
