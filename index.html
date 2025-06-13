@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Map App</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mappa delle attestazioni</title>
+
+  <!-- CSS di base -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css" />
+  <!-- Font Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div id="controls">
-    <h2>Filter by page range</h2>
-    <div id="pageSlider"></div>
-    <p id="rangeValue"></p>
-    <label><input type="checkbox" id="toggleProvinces" checked> Show Provinces</label><br>
-    <label><input type="checkbox" id="toggleCities" checked> Show Cities</label>
-  </div>
-  <div id="map"></div>
+  <!-- Sidebar -->
   <div id="sidebar">
-    <h2>Attestations</h2>
-    <div id="results"></div>
+    <h2>Attestazioni</h2>
+    <div id="slider-container"></div>
+    <div id="rangeValue">1–600</div>
+    <div id="layers-here"></div>
+    <div id="sidebar-content">
+      <div id="results"></div>
+    </div>
   </div>
 
+  <!-- Mappa -->
+  <div id="map"></div>
+
+  <!-- Librerie -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="map.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.js"></script>
+
+  <!-- Script modulari -->
+  <script type="module" src="map.js"></script>
 </body>
 </html>
