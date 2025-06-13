@@ -278,3 +278,104 @@ details[open] summary:after {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
+/* ============ MOBILE RESPONSIVENESS ============ */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 50vh;
+    border-right: none;
+    border-bottom: 1px solid #e9ecef;
+    order: 2;
+  }
+
+  #map {
+    height: 50vh;
+    order: 1;
+  }
+
+  #sidebar h2 {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+
+  #slider-container {
+    padding: 1rem;
+    top: 52px; /* Altezza header ridotta */
+  }
+
+  #layers-here {
+    padding: 0.75rem 1rem;
+  }
+
+  #sidebar-content {
+    padding: 1rem;
+  }
+
+  details {
+    margin-bottom: 0.75rem;
+  }
+
+  details summary {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .entry-block {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Mobile menu toggle */
+  #sidebar-toggle {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: var(--shadow-md);
+    z-index: 1001;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Initially hide sidebar on very small screens */
+  @media (max-width: 480px) {
+    #sidebar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-height: 70vh;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+      z-index: 1000;
+    }
+
+    #sidebar.active {
+      transform: translateY(0);
+    }
+
+    #map {
+      height: 100vh;
+    }
+
+    #sidebar-toggle {
+      display: flex;
+    }
+  }
+}

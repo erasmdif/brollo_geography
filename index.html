@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Mappa delle attestazioni</title>
 
   <!-- CSS di base -->
@@ -15,9 +15,12 @@
 </head>
 
 <body>
+  <!-- Mappa -->
+  <div id="map"></div>
+
   <!-- Sidebar -->
   <div id="sidebar">
-    <h2>Attestazioni</h2>
+    <h2>Attestazioni <span class="mobile-close">×</span></h2>
     <div id="slider-container"></div>
     <div id="rangeValue">1–600</div>
     <div id="layers-here"></div>
@@ -26,8 +29,8 @@
     </div>
   </div>
 
-  <!-- Mappa -->
-  <div id="map"></div>
+  <!-- Mobile toggle button -->
+  <button id="sidebar-toggle">☰</button>
 
   <!-- Librerie -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -36,5 +39,46 @@
 
   <!-- Script modulari -->
   <script type="module" src="map.js"></script>
+  
+  <!-- Mobile sidebar toggle script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.getElementById('sidebar-toggle');
+      const mobileClose = document.querySelector('.mobile-close');
+      
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          sidebar.classList.toggle('active');
+        });
+      }
+      
+      if (mobileClose) {
+        mobileClose.addEventListener('click', function() {
+          sidebar.classList.remove('active');
+        });
+      }
+      
+      // Adjust map height when sidebar is toggled
+      function adjustMapHeight() {
+        const map = document.getElementById('map');
+        if (window.innerWidth <= 480) {
+          if (sidebar.classList.contains('active')) {
+            map.style.height = '30vh';
+          } else {
+            map.style.height = '100vh';
+          }
+        }
+      }
+      
+      // Initial adjustment
+      adjustMapHeight();
+      
+      // Listen to sidebar toggle
+      if (sidebar) {
+        sidebar.addEventListener('transitionend', adjustMapHeight);
+      }
+    });
+  </script>
 </body>
 </html>
